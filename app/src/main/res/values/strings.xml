@@ -1,0 +1,60 @@
+<resources>
+    <string name="app_name">Football Hub</string>
+    <string name="dummy_home_team">Home team</string>
+    <string name="dummy_away_team">Away team</string>
+    <string name="dummy_time">29 Jul 2019 19:45</string>
+    <string name="dummy_points">30</string>
+    <string name="dummy_league">League</string>
+    <string name="select_league_header">Select a league:</string>
+    <string name="select_match_day">Select Match day</string>
+    <string name="match_day">Match day: $1</string>
+    <string name="home_header">Home</string>
+    <string name="fixtures_header">Fixtures</string>
+    <string-array name="leagues_array">
+        <item>Premier League</item>
+        <item>La Liga</item>
+        <item>Seria A</item>
+        <item>Bundesliga</item>
+        <item>Ligue 1</item>
+    </string-array>
+    <string-array name="match_day_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+    </string-array>
+</resources>

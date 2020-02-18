@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:name="com.bence.kotlinapp.ui.HomeFragment"
+    tools:context="com.bence.kotlinapp.ui.fixturelist.FixtureListFragment"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/league_title"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@color/colorGrey"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textSize="20sp"
+        android:textColor="@color/colorWhite"
+        android:drawableEnd="@drawable/ic_chevron_right_black_24dp"
+        tools:text="League name"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fixtures_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical" />
+
+</LinearLayout>

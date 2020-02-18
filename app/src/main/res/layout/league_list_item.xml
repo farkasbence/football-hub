@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimaryDark"
+    android:layout_margin="8dp">
+
+    <TextView
+        android:id="@+id/league_position_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textSize="20sp"
+        android:textColor="@color/colorWhite"
+        tools:text="1"/>
+
+    <ImageView
+        android:id="@+id/crest_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_toEndOf="@id/league_position_text_view"/>
+
+    <TextView
+        android:id="@+id/league_team_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textSize="20sp"
+        android:textColor="@color/colorWhite"
+        android:layout_toEndOf="@id/league_position_text_view"
+        tools:text="@string/dummy_home_team" />
+
+    <TextView
+        android:id="@+id/league_points_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textSize="20sp"
+        android:textColor="@color/colorWhite"
+        android:layout_alignParentEnd="true"
+        tools:text="@string/dummy_points" />
+
+</RelativeLayout>
