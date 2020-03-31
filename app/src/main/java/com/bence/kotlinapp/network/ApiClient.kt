@@ -1,33 +1,41 @@
 package com.bence.kotlinapp.network
 
-import okhttp3.Call
-import okhttp3.Callback
-import okhttp3.OkHttpClient
-import okhttp3.Request
+import com.bence.kotlinapp.dto.FixtureList
+import com.bence.kotlinapp.dto.Standings
+import com.bence.kotlinapp.utils.Constants.Companion.BASE_URL
+import com.bence.kotlinapp.utils.Constants.Companion.TOKEN_HEADER_NAME
+import io.reactivex.Observable
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.GET
+import retrofit2.http.Header
+import retrofit2.http.Path
+import retrofit2.http.Query
 
-class ApiClient {
-    private val TOKEN_HEADER_NAME = "X-Auth-Token"
-    private val TOKEN_HEADER_VALUE = ""
-    private val BASE_URL = "https://api.football-data.org/v2"
+interface ApiClient {
 
-    private var client = OkHttpClient()
+    @GET("competitions/{league}/matches")
+    fun getFixtureList(@Header(TOKEN_HEADER_NAME) token: String,
+                       @Path("league") league: String,
+                       @Query("matchday") matchDay: String
+    ): Observable<FixtureList>
 
-    fun getFixtureList(callback: Callback, matchDay: String, league: String): Call {
-        return getCall(callback, "$BASE_URL/competitions/$league/matches?matchday=$matchDay")
-    }
+    @GET("competitions/{league}/standings?standingType=TOTAL")
+    fun getLeagueTable(@Header(TOKEN_HEADER_NAME) token: String,
+                       @Path("league") league: String
+    ): Observable<Standings>
 
-    fun getLeagueTable(callback: Callback, league: String): Call {
-        return getCall(callback,"$BASE_URL/competitions/$league/standings?standingType=TOTAL")
-    }
+    companion object Factory {
 
-    private fun getCall(callback: Callback, url: String): Call {
-        val request = Request.Builder()
-            .url(url)
-            .addHeader(TOKEN_HEADER_NAME, TOKEN_HEADER_VALUE)
-            .build()
+        fun create(): ApiClient {
+            val retrofit = Retrofit.Builder()
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl(BASE_URL)
+                .build()
 
-        val call = client.newCall(request)
-        call.enqueue(callback)
-        return call
+            return retrofit.create(ApiClient::class.java)
+        }
     }
 }

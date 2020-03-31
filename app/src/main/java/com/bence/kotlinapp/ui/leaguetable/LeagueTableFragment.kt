@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bence.kotlinapp.R
 import com.bence.kotlinapp.dto.RankedTeam
 import com.bence.kotlinapp.dto.Standings
-import com.bence.kotlinapp.network.ApiClient
 import com.bence.kotlinapp.utils.LeagueEnum
 import kotlinx.android.synthetic.main.fragment_league_table.*
 import org.json.JSONException
@@ -36,7 +35,7 @@ class LeagueTableFragment : Fragment(), LeagueTablePresenter.View {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        presenter = LeagueTablePresenter(ApiClient())
+        presenter = LeagueTablePresenter()
         arguments?.let {
             selectedLeague = (it.getSerializable(ARG_SELECTED_LEAGUE) as LeagueEnum?)!!
         }
@@ -84,8 +83,8 @@ class LeagueTableFragment : Fragment(), LeagueTablePresenter.View {
     private fun fetchComplete(standings: Standings?) {
         teams.clear()
         if (standings != null) {
-            val table = standings.tableList[0]
-            val teamList = table.rankedTeamList
+            val table = standings.standings[0]
+            val teamList = table.table
             for (team in teamList) {
                 teams.add(team)
             }

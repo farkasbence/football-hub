@@ -124,7 +124,7 @@ class FixtureListFragment : Fragment(), FixtureListPresenter.View {
     private fun fetchComplete(fixtureList: FixtureList) {
         fixtures.clear()
 
-        for (fixture in fixtureList.fixtures) {
+        for (fixture in fixtureList.matches) {
             fixtures.add(fixture)
         }
         initRecyclerView()

@@ -29,7 +29,7 @@ class FixtureRecyclerAdapter(private val items : ArrayList<Fixture>, val context
         val homeTeam = items[position].homeTeam.name
         val awayTeam = items[position].awayTeam.name
         val formatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM, FormatStyle.SHORT)
-        val localDate = convertToLocalDateViaInstant(items[position].time)
+        val localDate = convertToLocalDateViaInstant(items[position].utcDate)
 
         holder.bind(homeTeam, awayTeam, formatter.format(localDate))
     }
