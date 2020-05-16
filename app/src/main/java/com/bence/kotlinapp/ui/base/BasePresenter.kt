@@ -1,6 +1,6 @@
 package com.bence.kotlinapp.ui.base
 
-open class BasePresenter<V: BaseView> {
+abstract class BasePresenter<V: BaseView> {
     protected var view: V? = null
 
     fun attach(view: V) {

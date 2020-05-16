@@ -4,5 +4,4 @@ import java.util.*
 
 data class Fixture(val homeTeam: Team,
                    val awayTeam: Team,
-                   val utcDate: Date
-)
+                   val utcDate: Date)
