@@ -5,6 +5,8 @@ import com.bence.kotlinapp.dto.Standings
 import com.bence.kotlinapp.utils.Constants.Companion.BASE_URL
 import com.bence.kotlinapp.utils.Constants.Companion.TOKEN_HEADER_NAME
 import io.reactivex.Observable
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -28,8 +30,13 @@ interface ApiClient {
 
     companion object Factory {
 
+        private val okHttpClient = OkHttpClient.Builder()
+            .addInterceptor(HttpLoggingInterceptor().also { it.level = HttpLoggingInterceptor.Level.BODY })
+            .build()
+
         fun create(): ApiClient {
             val retrofit = Retrofit.Builder()
+                .client(okHttpClient)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(BASE_URL)

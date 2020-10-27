@@ -13,7 +13,7 @@ class FixtureListPresenter : BasePresenter<FixtureListPresenter.View>() {
 
     fun fetchFixtureList(selectedLeague: LeagueEnum, selectedMatchDay: String) {
         val apiService = ApiClient.create()
-        apiService.getFixtureList(TOKEN_HEADER_VALUE, selectedLeague.apiAbbreviation, selectedMatchDay)
+        addSubscription(apiService.getFixtureList(TOKEN_HEADER_VALUE, selectedLeague.apiAbbreviation, selectedMatchDay)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
             .subscribe ({
@@ -22,7 +22,7 @@ class FixtureListPresenter : BasePresenter<FixtureListPresenter.View>() {
             }, { error ->
                 view?.showError()
                 error.printStackTrace()
-            })
+            }))
     }
 
     interface View : BaseView {

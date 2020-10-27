@@ -13,7 +13,8 @@ class LeagueTablePresenter : BasePresenter<LeagueTablePresenter.View>() {
 
     fun fetchLeagueTable(selectedLeague: LeagueEnum) {
         val apiService = ApiClient.create()
-        apiService.getLeagueTable(TOKEN_HEADER_VALUE, selectedLeague.apiAbbreviation)
+
+        addSubscription(apiService.getLeagueTable(TOKEN_HEADER_VALUE, selectedLeague.apiAbbreviation)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeOn(Schedulers.io())
             .subscribe ({
@@ -22,7 +23,7 @@ class LeagueTablePresenter : BasePresenter<LeagueTablePresenter.View>() {
             }, { error ->
                 view?.showError()
                 error.printStackTrace()
-            })
+            }))
     }
 
     interface View : BaseView {
